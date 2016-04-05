@@ -68,21 +68,42 @@
     [manager GET:urlString parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 
-        NSDictionary *dict = responseObject[0];
-        NSUInteger lfsCount = ((NSArray*)[dict objectForKey:@"lfs"]).count;
-        for (int i=0; i<lfsCount; i++) {
-            FullFormNode *lf = [[FullFormNode alloc] initWithDict:[dict objectForKey:@"lfs"][i]];
-            [self.resultArray addObject:lf];
+        if (((NSArray*)responseObject[0]).count > 0) {
             
-        }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            if ([self.resultArray count] > 0) {
-                [self performSegueWithIdentifier:@"showDetail" sender:self];
+            NSDictionary *dict = responseObject[0];
+            NSUInteger lfsCount = ((NSArray*)[dict objectForKey:@"lfs"]).count;
+            for (int i=0; i<lfsCount; i++) {
+                FullFormNode *lf = [[FullFormNode alloc] initWithDict:[dict objectForKey:@"lfs"][i]];
+                [self.resultArray addObject:lf];
+                
             }
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if ([self.resultArray count] > 0) {
+                    [self performSegueWithIdentifier:@"showDetail" sender:self];
+                }
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
 
-        });
+            });
 
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIAlertController * alert=   [UIAlertController
+                                              alertControllerWithTitle:@"No results"
+                                              message:@"No results for this Acronym"
+                                              preferredStyle:UIAlertControllerStyleAlert];
+                
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+                    
+                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                }];
+                
+                [alert addAction:okAction];
+                
+                UIViewController *vc = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+                [vc presentViewController:alert animated:YES completion:nil];
+            });
+
+        }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
