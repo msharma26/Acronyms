@@ -10,7 +10,6 @@
 #import "DetailViewController.h"
 #import "MBProgressHUD.h"
 #import "AFNetworking.h"
-#import "LongForm.h"
 
 #define urlString @"http://nactem.ac.uk/software/acromine/dictionary.py"
 
@@ -68,7 +67,6 @@
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
     
     [manager GET:urlString parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
-        //NSLog(@"%@", downloadProgress.);
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 
         NSDictionary *dict = responseObject[0];
@@ -78,13 +76,32 @@
             [self.resultArray addObject:[[dict objectForKey:@"lfs"][i] objectForKey:@"lf"]];
             
         }
-        if ([self.resultArray count] > 0) {
-            [self performSegueWithIdentifier:@"showDetail" sender:self];
-        }
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if ([self.resultArray count] > 0) {
+                [self performSegueWithIdentifier:@"showDetail" sender:self];
+            }
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+
+        });
 
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIAlertController * alert=   [UIAlertController
+                                          alertControllerWithTitle:[NSString stringWithFormat:@"%ld", (long)error.code]
+                                          message:[NSString stringWithFormat:@"%@", error.description]
+                                          preferredStyle:UIAlertControllerStyleAlert];
+            
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+                
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+            }];
+                
+            [alert addAction:okAction];
+                
+            UIViewController *vc = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+            [vc presentViewController:alert animated:YES completion:nil];
+        });
     }];
     
     
