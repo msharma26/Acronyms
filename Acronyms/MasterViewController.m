@@ -10,12 +10,14 @@
 #import "DetailViewController.h"
 #import "MBProgressHUD.h"
 #import "AFNetworking.h"
+#import "LongForm.h"
 
 #define urlString @"http://nactem.ac.uk/software/acromine/dictionary.py"
 
 @interface MasterViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *shortForm;
+@property (nonatomic, strong) NSMutableArray *resultArray;
 
 @end
 
@@ -23,14 +25,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+
+
+    self.resultArray = [[NSMutableArray alloc] init];
 
   self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-
+    [self.resultArray removeAllObjects];
     [super viewWillAppear:animated];
 }
 
@@ -45,6 +48,8 @@
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
         //[controller setDetailItem:object];
+        controller.longForms = self.resultArray;
+        //[self.resultArray removeAllObjects];
         controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
         controller.navigationItem.leftItemsSupplementBackButton = YES;
     }
@@ -65,7 +70,19 @@
     [manager GET:urlString parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
         //NSLog(@"%@", downloadProgress.);
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+
+        NSDictionary *dict = responseObject[0];
+        NSUInteger lfsCount = ((NSArray*)[dict objectForKey:@"lfs"]).count;
+        for (int i=0; i<lfsCount; i++) {
+
+            [self.resultArray addObject:[[dict objectForKey:@"lfs"][i] objectForKey:@"lf"]];
+            
+        }
+        if ([self.resultArray count] > 0) {
+            [self performSegueWithIdentifier:@"showDetail" sender:self];
+        }
         [MBProgressHUD hideHUDForView:self.view animated:YES];
+
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
