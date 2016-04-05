@@ -46,9 +46,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
-        //[controller setDetailItem:object];
         controller.longForms = self.resultArray;
-        //[self.resultArray removeAllObjects];
         controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
         controller.navigationItem.leftItemsSupplementBackButton = YES;
     }
