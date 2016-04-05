@@ -7,9 +7,10 @@
 //
 
 #import "DetailViewController.h"
+#import "FullFormNode.h"
 
 @interface DetailViewController () <UITableViewDataSource>
-@property (nonatomic, strong) NSMutableArray *lfArray;
+
 @end
 
 @implementation DetailViewController
@@ -24,7 +25,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
@@ -38,7 +38,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellId" forIndexPath:indexPath];
-    cell.textLabel.text = self.longForms[indexPath.row];
+    FullFormNode *lf = self.longForms [indexPath.row];
+    cell.textLabel.text = lf.fullForm;
     return cell;
 
 }
