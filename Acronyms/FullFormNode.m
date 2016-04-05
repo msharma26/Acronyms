@@ -10,4 +10,13 @@
 
 @implementation FullFormNode
 
+- (id) initWithDict: (NSDictionary*) dict {
+    if  (self) {
+        self.fullForm = [dict objectForKey:@"lf"];
+        self.freq = [dict objectForKey:@"freq"];
+        
+    }
+    return self;
+}
+
 @end

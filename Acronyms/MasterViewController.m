@@ -10,6 +10,7 @@
 #import "DetailViewController.h"
 #import "MBProgressHUD.h"
 #import "AFNetworking.h"
+#import "FullFormNode.h"
 
 #define urlString @"http://nactem.ac.uk/software/acromine/dictionary.py"
 
@@ -70,8 +71,8 @@
         NSDictionary *dict = responseObject[0];
         NSUInteger lfsCount = ((NSArray*)[dict objectForKey:@"lfs"]).count;
         for (int i=0; i<lfsCount; i++) {
-
-            [self.resultArray addObject:[[dict objectForKey:@"lfs"][i] objectForKey:@"lf"]];
+            FullFormNode *lf = [[FullFormNode alloc] initWithDict:[dict objectForKey:@"lfs"][i]];
+            [self.resultArray addObject:lf];
             
         }
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -101,8 +102,6 @@
             [vc presentViewController:alert animated:YES completion:nil];
         });
     }];
-    
-    
 }
 
 

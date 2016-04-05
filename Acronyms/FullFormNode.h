@@ -10,4 +10,10 @@
 
 @interface FullFormNode : NSObject
 
+- (id) initWithDict: (NSDictionary*) dict;
+
+@property (nonatomic, strong) NSString *fullForm;
+@property (nonatomic, strong) NSMutableArray *variations;
+@property (nonatomic, strong) NSString *freq;
+
 @end
