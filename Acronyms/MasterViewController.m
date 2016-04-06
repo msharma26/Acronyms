@@ -67,23 +67,30 @@
     
     [manager GET:urlString parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-
-        if (((NSArray*)responseObject[0]).count > 0) {
-            
-            NSDictionary *dict = responseObject[0];
-            NSUInteger lfsCount = ((NSArray*)[dict objectForKey:@"lfs"]).count;
-            for (int i=0; i<lfsCount; i++) {
-                FullFormNode *lf = [[FullFormNode alloc] initWithDict:[dict objectForKey:@"lfs"][i]];
-                [self.resultArray addObject:lf];
+        if (((NSArray*)responseObject).count > 0)
+        {
+            for(NSDictionary *dict in responseObject)
+            {
+                if([dict objectForKey:@"lfs"])
+                {
+                    NSUInteger lfsCount = ((NSArray*)[dict objectForKey:@"lfs"]).count;
+                    for (int i=0; i<lfsCount; i++) {
+                        FullFormNode *lf = [[FullFormNode alloc] initWithDict:[dict objectForKey:@"lfs"][i]];
+                        [self.resultArray addObject:lf];
+                        
+                    }
+                }
+                
                 
             }
+            
             dispatch_async(dispatch_get_main_queue(), ^{
                 if ([self.resultArray count] > 0) {
                     [self performSegueWithIdentifier:@"showDetail" sender:self];
                 }
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
 
-            });
+                });
 
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
