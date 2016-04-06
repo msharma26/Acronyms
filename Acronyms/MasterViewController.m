@@ -68,7 +68,7 @@
     [manager GET:urlString parameters:params progress:^(NSProgress * _Nonnull downloadProgress) {
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 
-        if (((NSArray*)responseObject[0]).count > 0) {
+        if (((NSArray*)responseObject).count > 0) {
             
             NSDictionary *dict = responseObject[0];
             NSUInteger lfsCount = ((NSArray*)[dict objectForKey:@"lfs"]).count;
