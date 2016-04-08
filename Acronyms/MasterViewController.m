@@ -26,10 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-
     self.resultArray = [[NSMutableArray alloc] init];
-
-  self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -46,12 +43,14 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
-        DetailViewController *controller = (DetailViewController *)[[segue destinationViewController] topViewController];
+        DetailViewController *controller = (DetailViewController *)[segue destinationViewController] ;
         controller.longForms = self.resultArray;
         controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
         controller.navigationItem.leftItemsSupplementBackButton = YES;
     }
 }
+
+
 #pragma mark - IBActions
 
 - (IBAction)getFullForm:(id)sender {
