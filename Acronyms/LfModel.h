@@ -10,9 +10,11 @@
 
 @interface LfModel : NSObject
 
-- (id)initWithDict: (NSDictionary*) dict;
+- (id)initWithDict: (NSDictionary *)dict;
 
 - (NSString *)fetchDescription;
 - (NSString *)fetchLongForm;
+- (BOOL)hasVariations;
+- (NSArray *) fetchVariationArray;
 
 @end

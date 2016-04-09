@@ -11,6 +11,7 @@
 @interface LfVarModel : NSObject
 
 - (id)initWithDict: (NSDictionary*) dict;
-
+- (NSString *)fetchDescription;
+- (NSString *)fetchLongForm;
 
 @end

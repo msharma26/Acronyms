@@ -107,6 +107,7 @@
                                 </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="JEX-9P-axG" id="ZtW-pW-tHG"/>
+                                    <outlet property="delegate" destination="JEX-9P-axG" id="StE-6L-3kJ"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -120,10 +121,74 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Available Full Forms" id="mOI-FS-AaM"/>
+                    <connections>
+                        <segue destination="9jr-x9-fOk" kind="show" identifier="showVariations" id="E6f-2i-rJY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1557" y="-630"/>
+        </scene>
+        <!--Detail-->
+        <scene sceneID="d4u-SA-DRA">
+            <objects>
+                <viewController title="Detail" id="9jr-x9-fOk" customClass="VariationsViewContoller" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SaF-1i-Jx3"/>
+                        <viewControllerLayoutGuide type="bottom" id="dHt-PA-kmR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YGa-lX-ntB">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="86" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GgH-C9-jp0">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="varCellId" textLabel="4So-nw-E7X" detailTextLabel="ncE-HO-MWU" rowHeight="86" style="IBUITableViewCellStyleSubtitle" id="XkS-lH-90L">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="86"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XkS-lH-90L" id="Bvx-j9-7Ij">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="85.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4So-nw-E7X">
+                                                    <rect key="frame" x="15" y="27" width="31.5" height="19.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ncE-HO-MWU">
+                                                    <rect key="frame" x="15" y="46.5" width="40.5" height="13.5"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="9jr-x9-fOk" id="Tm7-h6-MxT"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="GgH-C9-jp0" firstAttribute="height" secondItem="YGa-lX-ntB" secondAttribute="height" id="Bdd-wR-9kM"/>
+                            <constraint firstItem="GgH-C9-jp0" firstAttribute="centerY" secondItem="YGa-lX-ntB" secondAttribute="centerY" id="K7u-WG-VjR"/>
+                            <constraint firstItem="GgH-C9-jp0" firstAttribute="centerX" secondItem="YGa-lX-ntB" secondAttribute="centerX" id="Xwl-Ga-FmJ"/>
+                            <constraint firstItem="GgH-C9-jp0" firstAttribute="width" secondItem="YGa-lX-ntB" secondAttribute="width" id="ohP-a9-uAc"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Available Full Forms" id="Lf5-U9-2Qv"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pMo-O7-gWH" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2371" y="-630"/>
         </scene>
     </scenes>
 </document>
