@@ -22,7 +22,8 @@
 		323B3C0B1CB38B2500A6F579 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 323B3C051CB38B2500A6F579 /* AFURLSessionManager.m */; };
 		323B3C0E1CB38FAA00A6F579 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 323B3C0D1CB38FAA00A6F579 /* MBProgressHUD.m */; };
 		32C363941CB3FF3B0086C58D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 323B3BF11CB3852400A6F579 /* Info.plist */; };
-		32C3639A1CB429030086C58D /* flsNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C363991CB429030086C58D /* flsNode.m */; };
+		32C3639A1CB429030086C58D /* LfModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C363991CB429030086C58D /* LfModel.m */; };
+		32F42DA61CB9814F00171DD8 /* LfVarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F42DA51CB9814F00171DD8 /* LfVarModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,8 +54,10 @@
 		323B3C051CB38B2500A6F579 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
 		323B3C0C1CB38FAA00A6F579 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		323B3C0D1CB38FAA00A6F579 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		32C363981CB429030086C58D /* flsNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = flsNode.h; sourceTree = "<group>"; };
-		32C363991CB429030086C58D /* flsNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = flsNode.m; sourceTree = "<group>"; };
+		32C363981CB429030086C58D /* LfModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LfModel.h; sourceTree = "<group>"; };
+		32C363991CB429030086C58D /* LfModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LfModel.m; sourceTree = "<group>"; };
+		32F42DA41CB9814F00171DD8 /* LfVarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LfVarModel.h; sourceTree = "<group>"; };
+		32F42DA51CB9814F00171DD8 /* LfVarModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LfVarModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,8 +102,7 @@
 				323B3BEE1CB3852400A6F579 /* LaunchScreen.storyboard */,
 				323B3BF11CB3852400A6F579 /* Info.plist */,
 				323B3BDD1CB3852400A6F579 /* Supporting Files */,
-				32C363981CB429030086C58D /* flsNode.h */,
-				32C363991CB429030086C58D /* flsNode.m */,
+				32F42DA31CB97F2D00171DD8 /* Model */,
 			);
 			path = Acronyms;
 			sourceTree = "<group>";
@@ -149,6 +151,17 @@
 				323B3C0D1CB38FAA00A6F579 /* MBProgressHUD.m */,
 			);
 			name = MBProgressHUD;
+			sourceTree = "<group>";
+		};
+		32F42DA31CB97F2D00171DD8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				32C363981CB429030086C58D /* LfModel.h */,
+				32C363991CB429030086C58D /* LfModel.m */,
+				32F42DA41CB9814F00171DD8 /* LfVarModel.h */,
+				32F42DA51CB9814F00171DD8 /* LfVarModel.m */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,7 +237,7 @@
 			files = (
 				323B3C081CB38B2500A6F579 /* AFSecurityPolicy.m in Sources */,
 				323B3C0A1CB38B2500A6F579 /* AFURLResponseSerialization.m in Sources */,
-				32C3639A1CB429030086C58D /* flsNode.m in Sources */,
+				32C3639A1CB429030086C58D /* LfModel.m in Sources */,
 				323B3BE21CB3852400A6F579 /* AppDelegate.m in Sources */,
 				323B3BE51CB3852400A6F579 /* MasterViewController.m in Sources */,
 				323B3C0E1CB38FAA00A6F579 /* MBProgressHUD.m in Sources */,
@@ -232,6 +245,7 @@
 				323B3C0B1CB38B2500A6F579 /* AFURLSessionManager.m in Sources */,
 				323B3BDF1CB3852400A6F579 /* main.m in Sources */,
 				323B3C071CB38B2500A6F579 /* AFNetworkReachabilityManager.m in Sources */,
+				32F42DA61CB9814F00171DD8 /* LfVarModel.m in Sources */,
 				323B3BE81CB3852400A6F579 /* DetailViewController.m in Sources */,
 				323B3C091CB38B2500A6F579 /* AFURLRequestSerialization.m in Sources */,
 			);

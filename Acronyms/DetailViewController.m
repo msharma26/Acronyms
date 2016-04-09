@@ -7,7 +7,7 @@
 //
 
 #import "DetailViewController.h"
-#import "flsNode.h"
+#import "LfModel.h"
 
 @interface DetailViewController () <UITableViewDataSource>
 
@@ -38,7 +38,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellId" forIndexPath:indexPath];
-    flsNode *lf = self.longForms [indexPath.row];
+    LfModel *lf = self.longForms [indexPath.row];
     cell.textLabel.text = lf.fullForm;
     return cell;
 

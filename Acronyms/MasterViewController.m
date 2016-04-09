@@ -10,7 +10,7 @@
 #import "DetailViewController.h"
 #import "MBProgressHUD.h"
 #import "AFNetworking.h"
-#import "flsNode.h"
+#import "LfModel.h"
 
 #define urlString @"http://nactem.ac.uk/software/acromine/dictionary.py"
 
@@ -56,7 +56,6 @@
 - (IBAction)getFullForm:(id)sender {
     [MBProgressHUD showHUDAddedTo:self.view animated:true];
 
-    
     NSDictionary *params = @{@"sf": self.shortForm.text};
     
     NSURL *url = [NSURL URLWithString:urlString];
@@ -70,7 +69,7 @@
                 if([dict objectForKey:@"lfs"]) {
                     NSUInteger lfsCount = ((NSArray*)[dict objectForKey:@"lfs"]).count;
                     for (int i=0; i<lfsCount; i++) {
-                        flsNode *lf = [[flsNode alloc] initWithDict:[dict objectForKey:@"lfs"][i]];
+                        LfModel *lf = [[LfModel alloc] initWithDict:[dict objectForKey:@"lfs"][i]];
                         [self.resultArray addObject:lf];
                     }
                 }
