@@ -10,7 +10,7 @@
 #import "DetailViewController.h"
 #import "MBProgressHUD.h"
 #import "AFNetworking.h"
-#import "FullFormNode.h"
+#import "flsNode.h"
 
 #define urlString @"http://nactem.ac.uk/software/acromine/dictionary.py"
 
@@ -70,7 +70,7 @@
                 if([dict objectForKey:@"lfs"]) {
                     NSUInteger lfsCount = ((NSArray*)[dict objectForKey:@"lfs"]).count;
                     for (int i=0; i<lfsCount; i++) {
-                        FullFormNode *lf = [[FullFormNode alloc] initWithDict:[dict objectForKey:@"lfs"][i]];
+                        flsNode *lf = [[flsNode alloc] initWithDict:[dict objectForKey:@"lfs"][i]];
                         [self.resultArray addObject:lf];
                     }
                 }

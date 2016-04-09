@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FullFormNode : NSObject
+@interface flsNode : NSObject
 
 - (id) initWithDict: (NSDictionary*) dict;
 
