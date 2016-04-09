@@ -12,11 +12,16 @@
 
 @interface LfModel ()
 
+@property (nonatomic, strong) NSString *fullForm;
+@property (nonatomic, strong) NSMutableArray *variations;
+@property (nonatomic, strong) NSString *since;
+@property (nonatomic, strong) NSString *freq;
+
 @end
 
 @implementation LfModel
 
-- (id) initWithDict: (NSDictionary*) dict {
+- (id)initWithDict: (NSDictionary*) dict {
 
     if  (self) {
         
@@ -33,6 +38,21 @@
         }
     }
     return self;
+}
+
+
+- (NSString *)fetchDescription {
+    
+    NSString *descString = [NSString stringWithFormat:@"Since %@, Frequency: %@, ", self.since, self.freq];
+    if ([self.variations count] > 0) {
+        descString = [NSString stringWithFormat:@"%@ with %lu variations", descString, (unsigned long)self.variations.count];
+    }
+    return descString;
+}
+
+
+- (NSString *)fetchLongForm {
+    return self.fullForm;
 }
 
 @end
