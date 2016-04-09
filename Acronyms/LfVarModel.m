@@ -23,9 +23,17 @@
         self.fullForm = [dict objectForKey:@"lf"];
         self.freq = [dict objectForKey:@"freq"];
         self.since = [dict objectForKey:@"since"];
-        
     }
     return self;
+}
+
+- (NSString *)fetchDescription {
+    NSString *descString = [NSString stringWithFormat:@"Since %@ & Frequency: %@, ", self.since, self.freq];
+    return descString;
+}
+
+- (NSString *)fetchLongForm {
+    return self.fullForm;
 }
 
 @end

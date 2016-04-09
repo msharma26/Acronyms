@@ -50,9 +50,19 @@
     return descString;
 }
 
-
 - (NSString *)fetchLongForm {
     return self.fullForm;
+}
+
+- (BOOL)hasVariations {
+    if ([self.variations count]> 0) {
+        return YES;
+    }
+    return NO;
+}
+
+- (NSArray*) fetchVariationArray {
+    return [NSArray arrayWithArray:self.variations];
 }
 
 @end

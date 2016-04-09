@@ -8,9 +8,10 @@
 
 #import "DetailViewController.h"
 #import "LfModel.h"
+#import "VariationsViewContoller.h"
 
-@interface DetailViewController () <UITableViewDataSource>
-
+@interface DetailViewController () <UITableViewDataSource, UITableViewDelegate>
+@property (nonatomic, strong) NSArray *variationArrayToPass;
 @end
 
 @implementation DetailViewController
@@ -18,11 +19,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+#pragma mark - Navigation
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"showVariations"]) {
+        VariationsViewContoller *controller = (VariationsViewContoller *)[segue destinationViewController] ;
+        controller.variationArray = self.variationArrayToPass;
+    }
 }
 
 #pragma mark - TableView datasource
@@ -41,7 +50,20 @@
     LfModel *lf = self.longForms [indexPath.row];
     cell.textLabel.text = [lf fetchLongForm];
     cell.detailTextLabel.text = [lf fetchDescription];
+    if ([lf hasVariations]) {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
     return cell;
+}
+
+#pragma mark - TableView Delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    LfModel *lf = self.longForms [indexPath.row];
+    if ([lf hasVariations]) {
+        self.variationArrayToPass = [lf fetchVariationArray];
+        [self performSegueWithIdentifier:@"showVariations" sender:self];
+    }
 }
 
 

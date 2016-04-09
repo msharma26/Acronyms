@@ -21,6 +21,7 @@
 		323B3C0A1CB38B2500A6F579 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 323B3C031CB38B2500A6F579 /* AFURLResponseSerialization.m */; };
 		323B3C0B1CB38B2500A6F579 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 323B3C051CB38B2500A6F579 /* AFURLSessionManager.m */; };
 		323B3C0E1CB38FAA00A6F579 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 323B3C0D1CB38FAA00A6F579 /* MBProgressHUD.m */; };
+		329CA2F91CB99F9500DC608D /* VariationsViewContoller.m in Sources */ = {isa = PBXBuildFile; fileRef = 329CA2F81CB99F9500DC608D /* VariationsViewContoller.m */; };
 		32C363941CB3FF3B0086C58D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 323B3BF11CB3852400A6F579 /* Info.plist */; };
 		32C3639A1CB429030086C58D /* LfModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C363991CB429030086C58D /* LfModel.m */; };
 		32F42DA61CB9814F00171DD8 /* LfVarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F42DA51CB9814F00171DD8 /* LfVarModel.m */; };
@@ -54,6 +55,8 @@
 		323B3C051CB38B2500A6F579 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
 		323B3C0C1CB38FAA00A6F579 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		323B3C0D1CB38FAA00A6F579 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		329CA2F71CB99F9500DC608D /* VariationsViewContoller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VariationsViewContoller.h; sourceTree = "<group>"; };
+		329CA2F81CB99F9500DC608D /* VariationsViewContoller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VariationsViewContoller.m; sourceTree = "<group>"; };
 		32C363981CB429030086C58D /* LfModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LfModel.h; sourceTree = "<group>"; };
 		32C363991CB429030086C58D /* LfModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LfModel.m; sourceTree = "<group>"; };
 		32F42DA41CB9814F00171DD8 /* LfVarModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LfVarModel.h; sourceTree = "<group>"; };
@@ -97,6 +100,8 @@
 				323B3BE41CB3852400A6F579 /* MasterViewController.m */,
 				323B3BE61CB3852400A6F579 /* DetailViewController.h */,
 				323B3BE71CB3852400A6F579 /* DetailViewController.m */,
+				329CA2F71CB99F9500DC608D /* VariationsViewContoller.h */,
+				329CA2F81CB99F9500DC608D /* VariationsViewContoller.m */,
 				323B3BE91CB3852400A6F579 /* Main.storyboard */,
 				323B3BEC1CB3852400A6F579 /* Assets.xcassets */,
 				323B3BEE1CB3852400A6F579 /* LaunchScreen.storyboard */,
@@ -238,6 +243,7 @@
 				323B3C081CB38B2500A6F579 /* AFSecurityPolicy.m in Sources */,
 				323B3C0A1CB38B2500A6F579 /* AFURLResponseSerialization.m in Sources */,
 				32C3639A1CB429030086C58D /* LfModel.m in Sources */,
+				329CA2F91CB99F9500DC608D /* VariationsViewContoller.m in Sources */,
 				323B3BE21CB3852400A6F579 /* AppDelegate.m in Sources */,
 				323B3BE51CB3852400A6F579 /* MasterViewController.m in Sources */,
 				323B3C0E1CB38FAA00A6F579 /* MBProgressHUD.m in Sources */,
