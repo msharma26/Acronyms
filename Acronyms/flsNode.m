@@ -6,9 +6,9 @@
 //  Copyright © 2016 Manu Sharma. All rights reserved.
 //
 
-#import "FullFormNode.h"
+#import "flsNode.h"
 
-@implementation FullFormNode
+@implementation flsNode
 
 - (id) initWithDict: (NSDictionary*) dict {
     if  (self) {
