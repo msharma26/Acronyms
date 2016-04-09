@@ -8,9 +8,17 @@
 
 #import "LfVarModel.h"
 
+@interface LfVarModel ()
+
+@property (nonatomic, strong) NSString *fullForm;
+@property (nonatomic, strong) NSString *since;
+@property (nonatomic, strong) NSString *freq;
+
+@end
+
 @implementation LfVarModel
 
-- (id) initWithDict: (NSDictionary*) dict {
+- (id)initWithDict: (NSDictionary*) dict {
     if  (self) {
         self.fullForm = [dict objectForKey:@"lf"];
         self.freq = [dict objectForKey:@"freq"];

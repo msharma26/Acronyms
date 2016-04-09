@@ -15,8 +15,6 @@
 
 @implementation DetailViewController
 
-#pragma mark - Managing the detail item
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,7 +24,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
-
 
 #pragma mark - TableView datasource
 
@@ -38,10 +35,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellId" forIndexPath:indexPath];
+    if (!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"CellId"];
+    }
     LfModel *lf = self.longForms [indexPath.row];
-    cell.textLabel.text = lf.fullForm;
+    cell.textLabel.text = [lf fetchLongForm];
+    cell.detailTextLabel.text = [lf fetchDescription];
     return cell;
-
 }
 
 

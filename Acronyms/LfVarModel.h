@@ -10,11 +10,7 @@
 
 @interface LfVarModel : NSObject
 
-- (id) initWithDict: (NSDictionary*) dict;
-
-@property (nonatomic, strong) NSString *fullForm;
-@property (nonatomic, strong) NSString *since;
-@property (nonatomic, strong) NSString *freq;
+- (id)initWithDict: (NSDictionary*) dict;
 
 
 @end

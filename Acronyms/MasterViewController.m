@@ -25,12 +25,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     self.resultArray = [[NSMutableArray alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self.resultArray removeAllObjects];
     [super viewWillAppear:animated];
 }
 
@@ -45,8 +43,6 @@
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         DetailViewController *controller = (DetailViewController *)[segue destinationViewController] ;
         controller.longForms = self.resultArray;
-        controller.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
-        controller.navigationItem.leftItemsSupplementBackButton = YES;
     }
 }
 
@@ -54,6 +50,7 @@
 #pragma mark - IBActions
 
 - (IBAction)getFullForm:(id)sender {
+    [self.resultArray removeAllObjects];
     [MBProgressHUD showHUDAddedTo:self.view animated:true];
 
     NSDictionary *params = @{@"sf": self.shortForm.text};
