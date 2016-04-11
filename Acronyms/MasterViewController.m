@@ -17,6 +17,8 @@
 @interface MasterViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *shortForm;
+@property (weak, nonatomic) IBOutlet UIButton *submitButton;
+
 @property (nonatomic, strong) NSMutableArray *resultArray;
 
 @end
@@ -51,6 +53,9 @@
 
 - (IBAction)getFullForm:(id)sender {
     [self.resultArray removeAllObjects];
+    [self.shortForm setEnabled:NO];
+    [self.submitButton setEnabled:NO];
+    
     [MBProgressHUD showHUDAddedTo:self.view animated:true];
 
     NSDictionary *params = @{@"sf": self.shortForm.text};
@@ -77,45 +82,46 @@
                     [self performSegueWithIdentifier:@"showDetail" sender:self];
                 }
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
-
+                [self.submitButton setEnabled:YES];
+                [self.shortForm setEnabled:YES];
+                [self.shortForm becomeFirstResponder];
                 });
 
         } else {
             dispatch_async(dispatch_get_main_queue(), ^{
-                UIAlertController * alert=   [UIAlertController
+                UIAlertController *alert=   [UIAlertController
                                               alertControllerWithTitle:@"No results"
                                               message:@"No results for this Acronym"
                                               preferredStyle:UIAlertControllerStyleAlert];
-                
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
                 UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-                    
-                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                    [self.shortForm setEnabled:YES];
+                    [self.submitButton setEnabled:YES];
+                    [self.shortForm becomeFirstResponder];
                 }];
                 
                 [alert addAction:okAction];
-                
-                UIViewController *vc = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
-                [vc presentViewController:alert animated:YES completion:nil];
+                [self presentViewController:alert animated:YES completion:nil];
             });
 
         }
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            UIAlertController * alert=   [UIAlertController
+            UIAlertController *alert=   [UIAlertController
                                           alertControllerWithTitle:[NSString stringWithFormat:@"%ld", (long)error.code]
                                           message:[NSString stringWithFormat:@"%@", error.description]
                                           preferredStyle:UIAlertControllerStyleAlert];
             
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-                
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                [self.shortForm setEnabled:YES];
+                [self.submitButton setEnabled:YES];
+                [self.shortForm becomeFirstResponder];
             }];
                 
             [alert addAction:okAction];
-                
-            UIViewController *vc = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
-            [vc presentViewController:alert animated:YES completion:nil];
+            [self presentViewController:alert animated:YES completion:nil];
         });
     }];
 }
